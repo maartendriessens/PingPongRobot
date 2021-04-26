@@ -11,9 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="450dp"
         android:onClick="onStartStopButton"
         android:text="Start"
+        app:backgroundTint="#F63B3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +23,10 @@
         android:id="@+id/textTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:gravity="center"
         android:text="Mode"
+        android:textColor="#494747"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +57,9 @@
         android:id="@+id/txtTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="Timer"
+        android:textColor="#494747"
         app:layout_constraintStart_toStartOf="@+id/txtSpeed"
         app:layout_constraintTop_toBottomOf="@+id/txtSpeed" />
 
@@ -64,6 +67,7 @@
         android:id="@+id/textTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#494747"
         app:layout_constraintStart_toStartOf="@+id/textSpeed2"
         app:layout_constraintTop_toTopOf="@+id/txtTimer" />
 
@@ -74,6 +78,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:text="x"
+        android:textColor="#494747"
         app:layout_constraintStart_toEndOf="@+id/txtSpeed"
         app:layout_constraintTop_toTopOf="@+id/txtSpeed" />
 
@@ -84,6 +89,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:text="Balls per Minute"
+        android:textColor="#494747"
         app:layout_constraintStart_toEndOf="@+id/textSpeed2"
         app:layout_constraintTop_toTopOf="@+id/txtSpeed" />
 
@@ -92,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
+        android:textColor="#494747"
         app:layout_constraintStart_toStartOf="@+id/textTimer"
         app:layout_constraintTop_toTopOf="@+id/txtCounter" />
 
@@ -102,6 +109,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:text="Balls"
+        android:textColor="#494747"
         app:layout_constraintStart_toEndOf="@+id/textCounter"
         app:layout_constraintTop_toTopOf="@+id/textCounter" />
 
@@ -109,8 +117,9 @@
         android:id="@+id/txtCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="Counter"
+        android:textColor="#494747"
         app:layout_constraintStart_toStartOf="@+id/txtTimer"
         app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
 
@@ -118,10 +127,11 @@
         android:id="@+id/txtSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="200dp"
         android:text="Speed"
+        android:textColor="#494747"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,9 +144,42 @@
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:text="Back"
+        android:textColor="#494747"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:maxWidth="2dp"
+        android:maxHeight="2dp"
+        android:onClick="onButPlus"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textBallsmin"
+        app:layout_constraintStart_toEndOf="@+id/textBallsmin"
+        app:layout_constraintTop_toTopOf="@+id/textBallsmin" />
+
+    <Button
+        android:id="@+id/buttonMin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:maxWidth="2dp"
+        android:maxHeight="2dp"
+        android:onClick="onButMin"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonPlus"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlus"
+        app:layout_constraintTop_toTopOf="@+id/buttonPlus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

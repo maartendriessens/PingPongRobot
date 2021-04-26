@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Check"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -10,51 +11,58 @@
         android:id="@+id/textSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="50dp"
         android:text="Speed"
+        android:textColor="#494747"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/textMode"
+        app:layout_constraintTop_toBottomOf="@+id/textMode" />
 
     <Button
         android:id="@+id/buttonPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="275dp"
         android:onClick="onPlayButton"
         android:text="Play"
+        app:backgroundTint="#F63B3B"
+        app:iconTint="#F63B3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#F63B3B"
+        app:strokeColor="#F63B3B" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
         android:text="PingPongRobot"
-
         android:textAlignment="center"
+        android:textColor="#494747"
         android:textSize="32sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="163dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/toggleMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:background="#494747"
         android:text="ToggleButton"
+        android:textColor="#FAF8F8"
         android:textOff="Automatic"
         android:textOn="Manual"
         app:layout_constraintBottom_toBottomOf="@+id/textMode"
         app:layout_constraintStart_toEndOf="@+id/textMode"
-        app:layout_constraintTop_toTopOf="@+id/textMode" />
+        app:layout_constraintTop_toTopOf="@+id/textMode"
+        app:layout_constraintVertical_bias="0.541" />
 
     <TextView
         android:id="@+id/textMode"
@@ -64,6 +72,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="380dp"
         android:text="Mode"
+        android:textColor="#494747"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,10 +81,13 @@
         android:id="@+id/seekBarSpeed"
         android:layout_width="100dp"
         android:layout_height="30dp"
+        android:background="#00A61717"
         android:max="59"
+        android:thumb="@drawable/ball4"
         app:layout_constraintBottom_toBottomOf="@+id/textSpeed"
         app:layout_constraintStart_toStartOf="@+id/toggleMode"
-        app:layout_constraintTop_toTopOf="@+id/textSpeed" />
+        app:layout_constraintTop_toTopOf="@+id/textSpeed"
+        app:tickMarkTint="#BC2121" />
 
     <TextView
         android:id="@+id/textSeekBar"
@@ -83,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="#balls/min"
+        android:textColor="#494747"
         app:layout_constraintBottom_toBottomOf="@+id/seekBarSpeed"
         app:layout_constraintEnd_toEndOf="@+id/seekBarSpeed"
         app:layout_constraintStart_toStartOf="@+id/seekBarSpeed" />
@@ -94,8 +107,9 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="75dp"
-        android:text="History"
         android:onClick="onHistoryButton"
+        android:text="History"
+        app:backgroundTint="#494747"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -105,10 +119,48 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:text="Settings"
         android:onClick="onSettingsButton"
+        android:text="Settings"
+        app:backgroundTint="#494747"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonHistory" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="257dp"
+        android:layout_height="191dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_white" />
+
+    <CheckBox
+        android:id="@+id/checkBoxNewPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="onCheckNewPlayer"
+        android:text="New player"
+        android:textColor="#494747"
+        app:buttonTint="#494747"
+        app:layout_constraintStart_toStartOf="@+id/textSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textSpeed" />
+
+    <EditText
+        android:id="@+id/textNewPlayer"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="name"
+        android:inputType="textPersonName"
+        android:textColor="#494747"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxNewPlayer"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxNewPlayer"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxNewPlayer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

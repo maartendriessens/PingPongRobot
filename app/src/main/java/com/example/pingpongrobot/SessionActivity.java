@@ -26,7 +26,7 @@ public class SessionActivity extends AppCompatActivity {
     private Mode mode;
     private TextView textTitle, textSpeed,textCounter;
     private Chronometer timer;
-    private Button ButtonstartStop, buttonRight, buttonLeft;
+    private Button ButtonstartStop, buttonRight, buttonLeft, buttonPlus, buttonMin;
     private int speed, counter = 0;
     private long lastTime;
     private Boolean playing = false;
@@ -44,6 +44,8 @@ public class SessionActivity extends AppCompatActivity {
         ButtonstartStop = (Button) findViewById(R.id.buttonStartStop);
         buttonLeft = (Button) findViewById(R.id.buttonLeft);
         buttonRight = (Button) findViewById(R.id.buttonRight);
+        buttonPlus = (Button) findViewById(R.id.buttonPlus);
+        buttonMin = (Button) findViewById(R.id.buttonMin);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -53,7 +55,8 @@ public class SessionActivity extends AppCompatActivity {
         }
         textTitle.setText(mode.toString());
         textSpeed.setText(String.valueOf(speed));
-        Socket socket = MainActivity.SocketHandler.getSocket();
+
+        /*Socket socket = MainActivity.SocketHandler.getSocket();
         try {
             output = new PrintWriter(socket.getOutputStream());
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -62,6 +65,7 @@ public class SessionActivity extends AppCompatActivity {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
+        */
 
         switch (mode) {
             case AUTOMATIC:
@@ -70,7 +74,7 @@ public class SessionActivity extends AppCompatActivity {
         }
 
     }
-
+/*
     class threadIn implements Runnable {
         @Override
         public void run() {
@@ -94,7 +98,7 @@ public class SessionActivity extends AppCompatActivity {
             }
         }
     }
-
+*/
     class threadOut implements Runnable {
         private String message;
         threadOut(String message) {
@@ -157,4 +161,14 @@ public class SessionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onButPlus(View caller){
+        speed++;
+        textSpeed.setText(String.valueOf(speed));
+
+    }
+    public void onButMin(View caller){
+        speed--;
+        textSpeed.setText(String.valueOf(speed));
+
+    }
 }

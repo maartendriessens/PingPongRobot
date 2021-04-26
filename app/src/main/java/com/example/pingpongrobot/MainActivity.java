@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static SeekBar seekBarSpeed;
     private static TextView textSeekBar;
+    private static EditText textNewPlayer;
     private static ToggleButton toggleMode;
+    private static CheckBox checkBoxNewPlayer;
     private PrintWriter output;
     private BufferedReader input;
     private int speed = 1;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toggleMode =  (ToggleButton) findViewById(R.id.toggleMode);
+        checkBoxNewPlayer = (CheckBox) findViewById(R.id.checkBoxNewPlayer);
+        textNewPlayer = (EditText) findViewById(R.id.textNewPlayer);
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             new Thread(new threadConnected()).start();
@@ -98,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    public void onCheckNewPlayer(View caller){
+        if (checkBoxNewPlayer.isChecked()) {
+            textNewPlayer.setVisibility(View.VISIBLE);
+        }
+        else textNewPlayer.setVisibility(View.INVISIBLE);
+    }
 
     public void onPlayButton( View caller)
     {
@@ -109,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(getApplicationContext(), "Not connected to ESP" , Toast.LENGTH_LONG).show();
+
+            //in de uiteindelijke versie dit nog wegdoen:
+            Intent intent = new Intent(this, SessionActivity.class);
+            intent.putExtra("mode", toggleMode.getText().toString().toUpperCase());
+            intent.putExtra("speed", seekBarSpeed.getProgress()+1);
+            startActivity(intent);
         }
     }
 
