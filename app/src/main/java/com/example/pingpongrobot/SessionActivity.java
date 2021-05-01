@@ -32,6 +32,9 @@ public class SessionActivity extends AppCompatActivity {
     private Boolean playing = false;
     private Handler handler = new Handler();
 
+    //database stuff
+    DataBaseHelper dataBaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,7 +159,25 @@ public class SessionActivity extends AppCompatActivity {
 
     public void onButBack(View caller){
         stopSession();
+        SessionModel sessionModel;
+        double sessionTime = SystemClock.elapsedRealtime();
+        int dataBaseTime = ((int)sessionTime)/1000;
+        try {
+            sessionModel = new SessionModel(-1, mode.toString(),0 , true, dataBaseTime, 60.0 );
+
+        }
+        catch (Exception e){
+            Toast.makeText(SessionActivity.this, "Error creating session", Toast.LENGTH_SHORT).show();
+            sessionModel = new SessionModel(-1, "error", 0, false, 0, 0);
+        }
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(SessionActivity.this);
+        boolean success = dataBaseHelper.addOne(sessionModel);
+
+        Toast.makeText(SessionActivity.this, "added= " + success, Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(this, MainActivity.class);
+
+
         intent.putExtra("speed", speed);
         startActivity(intent);
     }

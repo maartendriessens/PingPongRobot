@@ -33,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
     private static final int SERVER_PORT = 3333;
     private static final String SERVER_IP = "192.168.4.1";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toggleMode =  (ToggleButton) findViewById(R.id.toggleMode);
         checkBoxNewPlayer = (CheckBox) findViewById(R.id.checkBoxNewPlayer);
+
         textNewPlayer = (EditText) findViewById(R.id.textNewPlayer);
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
